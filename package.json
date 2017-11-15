@@ -1,0 +1,14 @@
+{
+  "name": "databases",
+  "version": "1.0.0",
+  "description": "databases project 2017",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Matt McLeod",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.15.0"
+  }
+}
