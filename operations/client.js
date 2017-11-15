@@ -9,7 +9,7 @@ var updateMaker = require('./update');
 function clientMaker(connection) {
     var client = {
         select: selectMaker(connection),
-        update: updateMaker(conection),
+        update: updateMaker(connection),
         delete: deleteMaker(connection),
         insert: {
             customer: insertCustomerMaker(connection),
