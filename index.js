@@ -1,9 +1,7 @@
 const mysql = require('mysql');
-const readline = require('readline');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const SC = require('./stringConstants');
 const clientMaker = require('./operations/client');
 const transactions = require('./transactions/transactions');
 
@@ -30,7 +28,16 @@ app.post('/addCustomer', (req, res) => {
     transactions.addNewCustomer(req.body, client, (customer) => {
         client.insert.customer(customer);
     });
-    console.log(req.body);
+});
+
+app.get('/addProduct', (req, res) => {
+    res.sendFile(path.join(__dirname + '/ui/addProduct.html'));
+});
+
+app.post('/addProduct', (req, res) => {
+    transactions.addNewProduct(req.body, client, (product) => {
+        client.insert.product(product);
+    });
 });
 
 app.listen(8080);

@@ -10,7 +10,7 @@ function insertCallbackMaker(customer, callback) {
 
 function addNewCustomer(customer, client, callback) {
     var insert_callback = insertCallbackMaker(customer, callback);
-    var customer_count = client.select({
+    client.select({
         fields: ['COUNT(*)'],
         tables: ['Customers'],
         conditions: [

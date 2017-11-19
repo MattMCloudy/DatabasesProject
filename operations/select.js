@@ -1,5 +1,3 @@
-const queryString = 'SELECT ? FROM ? WHERE ?;';
-
 function selectMaker(connection) {
     return function(query, callback) {
         var fields = query.fields.join(', ');
