@@ -27,9 +27,10 @@ app.get('/addCustomer', (req, res) => {
 });
 
 app.post('/addCustomer', (req, res) => {
+    transactions.addNewCustomer(req.body, client, (customer) => {
+        client.insert.customer(customer);
+    });
     console.log(req.body);
 });
 
 app.listen(8080);
-
-connection.end();
