@@ -40,4 +40,14 @@ app.post('/addProduct', (req, res) => {
     });
 });
 
+app.get('/addOrder', (req, res) => {
+    res.sendFile(path.join(__dirname + '/ui/addOrder.html'));
+});
+
+app.post('/addOrder', (req, res) => {
+    transactions.addNewOrder(req.body, client, (order) => {
+        client.insert.order(order);
+    });
+});
+
 app.listen(8080);
