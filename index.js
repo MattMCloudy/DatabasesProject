@@ -26,9 +26,7 @@ app.get('/addCustomer', (req, res) => {
 });
 
 app.post('/addCustomer', (req, res) => {
-    transactions.addNewCustomer(req.body, client, (customer) => {
-        client.insert.customer(customer);
-    });
+    transactions.addNewCustomer(req.body, client);
 });
 
 app.get('/addProduct', (req, res) => {
@@ -36,9 +34,7 @@ app.get('/addProduct', (req, res) => {
 });
 
 app.post('/addProduct', (req, res) => {
-    transactions.addNewProduct(req.body, client, (product) => {
-        client.insert.product(product);
-    });
+    transactions.addNewProduct(req.body, client);
 });
 
 app.get('/addOrder', (req, res) => {
@@ -46,9 +42,7 @@ app.get('/addOrder', (req, res) => {
 });
 
 app.post('/addOrder', (req, res) => {
-    transactions.addNewOrder(req.body, client, (order) => {
-        client.insert.order(order);
-    });
+    transactions.addNewOrder(req.body, client);
 });
 
 app.get('/showProducts', (req, res) => {
@@ -71,9 +65,23 @@ app.get('/makePayment', (req, res) => {
 });
 
 app.post('/makePayment', (req, res) => {
-    transactions.makePayment(req.body, client, (payment) => {
-        client.insert.customer_payment(payment);
-    });
+    transactions.makePayment(req.body, client);
+});
+
+app.get('/returnProduct', (req, res) => {
+    res.sendFile(path.join(__dirname + '/ui/returnProduct.html'));
+});
+
+app.post('/returnProduct', (req, res) => {
+    transactions.returnProduct(req.body, client);
+});
+
+app.get('/deleteCustomer', (req, res) => {
+    res.sendFile(path.join(__dirname + '/ui/deleteCustomer.html'));
+});
+
+app.post('/deleteCustomer', (req, res) => {
+    transactions.deleteCustomer(req.body, client);
 });
 
 app.listen(8080);

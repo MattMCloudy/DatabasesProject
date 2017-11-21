@@ -1,4 +1,4 @@
-function insertCallbackMaker(order,callback) {
+function insertCallbackMaker(order, client) {
     return (results) => {
         var current_count = results[0]['COUNT(*)'];
         order['Order_ID'] = current_count + 1;
@@ -6,12 +6,12 @@ function insertCallbackMaker(order,callback) {
         order['Is_Paid'] = false;
         order['total_price'] = 0;
         console.log(order);
-        callback(order);
+        client.insert.order(order);
     }
 }
 
-function addNewOrder(order, client, callback) {
-    var insert_callback = insertCallbackMaker(order, callback);
+function addNewOrder(order, client) {
+    var insert_callback = insertCallbackMaker(order, client);
     client.select({
         fields: ['COUNT(*)'],
         tables: ['Orders'],

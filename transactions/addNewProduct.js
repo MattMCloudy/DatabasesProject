@@ -1,15 +1,15 @@
-function insertCallbackMaker(product, callback) {
+function insertCallbackMaker(product, client) {
     return (results) => {
         var current_count = results[0]['COUNT(*)'];
         product['ProductId'] = current_count + 1;
         product['OrderId'] = null;
         console.log(product)
-        callback(product);
+        client.insert.product(product);
     }
 }
 
-function addNewProduct(product, client, callback) {
-    var insert_callback = insertCallbackMaker(product, callback);
+function addNewProduct(product, client) {
+    var insert_callback = insertCallbackMaker(product, client);
     client.select({
         fields: ['COUNT(*)'],
         tables: ['Products'],
