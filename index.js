@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const clientMaker = require('./operations/client');
 const transactions = require('./transactions/transactions');
+const createTable = require('./utilities/createTable');
 
 var app = express();
 app.use(bodyParser.urlencoded({
@@ -47,6 +48,13 @@ app.get('/addOrder', (req, res) => {
 app.post('/addOrder', (req, res) => {
     transactions.addNewOrder(req.body, client, (order) => {
         client.insert.order(order);
+    });
+});
+
+app.get('/showProducts', (req, res) => {
+    connection.query('SELECT * FROM Products WHERE OrderId IS NULL;', (err, results, fields) => {
+        console.log(results);
+        res.send('<html>' + createTable(results) + '</html>');
     });
 });
 
