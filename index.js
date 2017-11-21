@@ -84,4 +84,14 @@ app.post('/deleteCustomer', (req, res) => {
     transactions.deleteCustomer(req.body, client);
 });
 
+app.get('/updateProduct', (req, res) => {
+    res.sendFile(path.join(__dirname + '/ui/updateProduct.html'));
+});
+
+app.post('/updateProduct', (req, res) => {
+    connection.query('UPDATE Products SET ' + req.body['Param'] + ' = \'' + req.body['Value'] + '\' WHERE Type = \'' + req.body['Type'] + '\';', (err, results, fields) => {
+        if (err) throw err;
+    });
+});
+
 app.listen(8080);
