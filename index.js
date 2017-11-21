@@ -58,4 +58,22 @@ app.get('/showProducts', (req, res) => {
     });
 });
 
+app.get('/addProductToOrder', (req, res) => {
+    res.sendFile(path.join(__dirname + '/ui/addProductToOrder.html'));
+});
+
+app.post('/addProductToOrder', (req, res) => {
+    transactions.addProductsToOrder(req.body, client);
+});
+
+app.get('/makePayment', (req, res) => {
+    res.sendFile(path.join(__dirname + '/ui/makePayment.html'));
+});
+
+app.post('/makePayment', (req, res) => {
+    transactions.makePayment(req.body, client, (payment) => {
+        client.insert.customer_payment(payment);
+    });
+});
+
 app.listen(8080);
