@@ -1,0 +1,21 @@
+ProductID,OrderId,Product_Img,Description,Type,Price
+1,,,Pepper Poppers,Appetizers,5.99
+2,,,Guacamole,Appetizers,4.99
+3,,,Avacado Salsa,Appetizers,6.99
+4,,,Bean Dip,Appetizers,4.99
+5,,,Garden Salad,Salad,8.99
+6,,,Caesar Salad,Salad,7.99
+7,,,Cobb Salad,Salad,9.99
+8,,,Greek Salad,Salad,6.99
+9,,,Water,Beverage,1.99
+10,,,Milk,Beverage,2.99
+11,,,Tea,Beverage,1.99
+12,,,Beer,Beverage,10.5
+13,,,Chicken Cordon Bleu,Maindish,14.5
+14,,,Sphagetti with Meatballs,Maindish,15.5
+15,,,Oven Roasted Chicken,Maindish,9.99
+16,,,Chicken and Broccoli,Maindish,12.5
+17,,,Pudding,Dessert,5.99
+18,,,Pecan Pie,Dessert,8.99
+19,,,Cobbler,Dessert,11.5
+20,,,Chocolate Chip Cookies,Dessert,5.99
